@@ -39,3 +39,9 @@ As a player
 To enjoy the sweet taste of victory
 I need to be able to find out when I have won a game
 ```
+
+```
+As a player
+To make the deadlock crushingly obvious
+I need to be told that the game has ended in a draw
+```
