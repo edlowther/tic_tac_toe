@@ -1,9 +1,7 @@
 class Square
-  @@square_count = 0
   attr_reader :id
-  def initialize
-    @@square_count += 1
-    @id = @@square_count
+  def initialize(id)
+    @id = id
     @occupied = false
   end
 
@@ -13,5 +11,5 @@ class Square
 
   def occupy
     @occupied = true
-  end 
+  end
 end

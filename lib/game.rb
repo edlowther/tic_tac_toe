@@ -14,8 +14,9 @@ class Game
     square = @grid.get_square_by_id(id)
     if !square.is_occupied?
       @player_in_play.add_square(square)
+      @player_in_play.check_if_won(@grid.winning_combinations)
       toggle_player_in_play
-    end 
+    end
   end
 
   private
