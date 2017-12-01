@@ -8,6 +8,7 @@ class Player
   end
 
   def add_square(square)
+    square.occupy
     @occupied_squares << square
   end
 end

@@ -1,8 +1,14 @@
+require 'square'
+
 class Grid
   attr_reader :squares
-  def initialize(square_class)
+  def initialize(square_class=Square)
     @squares = []
     9.times { @squares << square_class.new }
+  end
+
+  def get_square_by_id(id)
+    @squares[id - 1]
   end
 
   def winning_combinations

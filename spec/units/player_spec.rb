@@ -2,7 +2,7 @@ require 'player'
 
 describe Player do
   subject(:player) { described_class.new }
-  let(:square) { double(:square) }
+  let(:square) { double(:square, :occupy => true) }
   describe '#new' do
     player1 = Player.new
     player2 = Player.new
