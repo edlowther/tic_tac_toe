@@ -1,4 +1,4 @@
-require 'square'
+require_relative 'square'
 
 class Grid
   attr_reader :squares
@@ -19,7 +19,7 @@ class Grid
       end
     end
     answer
-  end 
+  end
 
   def winning_combinations
     [

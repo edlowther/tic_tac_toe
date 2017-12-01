@@ -9,7 +9,7 @@ class Player
   end
 
   def add_square(square)
-    square.occupy
+    square.occupy(@id)
     @occupied_squares << square
   end
 
