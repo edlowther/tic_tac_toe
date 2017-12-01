@@ -16,6 +16,20 @@ describe 'Gameplay' do
       expect(player1.occupied_squares.length).to eq 2
       expect(player2.occupied_squares.length).to eq 1
     end
+    it 'is impossible to take a turn if the game is over' do
+      game = Game.new
+      player1 = game.players[0]
+      player2 = game.players[1]
+      game.select_square(5)
+      game.select_square(6)
+      game.select_square(9)
+      game.select_square(3)
+      game.select_square(1)
+      expect(player1.has_won?).to be true
+      expect(player2.occupied_squares.length).to eq 2
+      game.select_square(4)
+      expect(player2.occupied_squares.length).to eq 2
+    end
   end
 
   describe 'selecting same square twice' do
@@ -92,6 +106,14 @@ describe 'Gameplay' do
       game.select_square(2)
       game.select_square(7)
       expect(player2.has_won?).to be true
+    end
+  end
+
+  describe 'drawing' do
+    it 'is possible' do
+      game = Game.new
+      [1,2,3,4,6,5,7,9,8].each { |square_id| game.select_square(square_id) }
+      expect(game.is_over?).to eq true
     end
   end
 end

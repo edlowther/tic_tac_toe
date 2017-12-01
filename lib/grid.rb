@@ -11,6 +11,16 @@ class Grid
     @squares[id - 1]
   end
 
+  def is_full?
+    answer = true
+    @squares.each do |square|
+      if !square.is_occupied?
+        answer = false
+      end
+    end
+    answer
+  end 
+
   def winning_combinations
     [
       [1,2,3],
