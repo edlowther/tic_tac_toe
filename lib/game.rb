@@ -17,16 +17,7 @@ class Game
     square = @grid.get_square_by_id(id)
     if !@game_is_over && !square.is_occupied?
       @player_in_play.add_square(square)
-      @player_in_play.check_if_won(@grid.winning_combinations)
-      if @player_in_play.has_won?
-        @game_is_over = true
-        puts "#{@player_in_play.id} wins!"
-      elsif @grid.is_full?
-        puts "nobody wins!"
-        @game_is_over = true
-      end
-      toggle_player_in_play
-      puts @printer_class.new(@grid).output
+      end_or_continue_game
     end
   end
 
@@ -41,5 +32,18 @@ class Game
     else
       @player_in_play = @players.first
     end
+  end
+
+  def end_or_continue_game
+    @player_in_play.check_if_won(@grid.winning_combinations)
+    if @player_in_play.has_won?
+      @game_is_over = true
+      puts "#{@player_in_play.id} wins!"
+    elsif @grid.is_full?
+      puts "nobody wins!"
+      @game_is_over = true
+    end
+    toggle_player_in_play
+    puts @printer_class.new(@grid).output
   end
 end
