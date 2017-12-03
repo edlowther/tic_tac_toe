@@ -38,12 +38,13 @@ class Game
     @player_in_play.check_if_won(@grid.winning_combinations)
     if @player_in_play.has_won?
       @game_is_over = true
-      puts "#{@player_in_play.id} wins!"
+      puts @printer_class.new(@grid, winner=@player_in_play.id).output
     elsif @grid.is_full?
-      puts "nobody wins!"
+      puts @printer_class.new(@grid, winner="NOBODY").output
       @game_is_over = true
+    else
+      puts @printer_class.new(@grid).output
     end
     toggle_player_in_play
-    puts @printer_class.new(@grid).output
   end
 end

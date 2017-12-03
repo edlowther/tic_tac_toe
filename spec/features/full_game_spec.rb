@@ -112,7 +112,11 @@ describe 'Gameplay' do
   describe 'drawing' do
     it 'is possible' do
       game = Game.new
-      [1,2,3,4,6,5,7,9,8].each { |square_id| game.select_square(square_id) }
+      [1,2,3,4,6,5,7,9].each do |square_id|
+        game.select_square(square_id)
+        expect(game.is_over?).to eq false
+      end
+      game.select_square(8)
       expect(game.is_over?).to eq true
     end
   end

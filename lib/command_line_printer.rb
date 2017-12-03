@@ -1,6 +1,7 @@
 class CommandLinePrinter
-  def initialize(grid)
+  def initialize(grid, winner=false)
     @grid = grid
+    @winner = winner
   end
 
   def output
@@ -14,6 +15,9 @@ Player two: X
     result += "\n-------------\n|"
     (6..8).each { |i| result += " #{substitute_symbol_if_occupied(i)} |"}
     result += "\n-------------"
+    if @winner
+      result += "\n\nGAME OVER: #{@winner} WINS!"
+    end 
     result
   end
 
