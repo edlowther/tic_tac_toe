@@ -19,13 +19,8 @@ class Player
 
   def check_if_won(winning_combinations)
     winning_combinations.each do |combination|
-      square_in_combo_count = 0
-      @occupied_squares.each do |square|
-        if combination.include?(square.id)
-          square_in_combo_count += 1
-        end
-      end
-      if square_in_combo_count == 3
+      matches = @occupied_squares.select { |square| combination.include?(square.id) }
+      if matches.length == 3
         @has_won = true
         break
       end
