@@ -12,13 +12,7 @@ class Grid
   end
 
   def is_full?
-    answer = true
-    @squares.each do |square|
-      if !square.is_occupied?
-        answer = false
-      end
-    end
-    answer
+    @squares.select(&:is_occupied?).length == 9
   end
 
   def winning_combinations
