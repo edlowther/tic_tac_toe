@@ -3,7 +3,7 @@ class Player
   attr_reader :id, :occupied_squares
   def initialize
     @@player_count += 1
-    @id = @@player_count == 1 ? "O" : "X"
+    @id = @@player_count % 2 == 1 ? "O" : "X"
     @occupied_squares = []
     @has_won = false
   end
